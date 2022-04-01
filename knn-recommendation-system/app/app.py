@@ -7,6 +7,7 @@ from utils.utils import get_movie_name_match
 from flask_bootstrap import Bootstrap
 # pip install Flask-Bootstrap
 
+
 app = Flask(__name__)
 Bootstrap(app)
 
