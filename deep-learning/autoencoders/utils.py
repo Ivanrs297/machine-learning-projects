@@ -24,6 +24,7 @@ class VAE(nn.Module):
         # Mu and logVar are used for generating middle representation z and KL divergence loss
         x = F.relu(self.encConv1(x))
         x = F.relu(self.encConv2(x))
+        # print("HERE: ", x.shape)
         x = x.view(-1, 32*20*20)
         mu = self.encFC1(x)
         logVar = self.encFC2(x)
@@ -54,3 +55,31 @@ class VAE(nn.Module):
         z = self.reparameterize(mu, logVar)
         out = self.decoder(z)
         return out, mu, logVar
+
+
+
+class ConvAutoencoder(nn.Module):
+    def __init__(self):
+        super(ConvAutoencoder, self).__init__()
+        # Encoder
+        self.conv1 = nn.Conv2d(3, 16, 3, padding=1)  
+        self.conv2 = nn.Conv2d(16, 4, 3, padding=1)
+        self.pool = nn.MaxPool2d(2, 2)
+        
+        # Decoder
+        self.t_conv1 = nn.ConvTranspose2d(4, 16, 2, stride=2)
+        self.t_conv2 = nn.ConvTranspose2d(16, 3, 2, stride=2)
+
+    def forward(self, x):
+        # Encoder
+        x = F.relu(self.conv1(x))
+        x = self.pool(x)
+        # add second hidden layer
+        x = F.relu(self.conv2(x))
+        x = self.pool(x)  # compressed representation
+
+        # Decoder
+        x = F.relu(self.t_conv1(x))
+        x = F.sigmoid(self.t_conv2(x))
+                
+        return x
