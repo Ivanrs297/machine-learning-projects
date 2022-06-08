@@ -57,29 +57,57 @@ class VAE(nn.Module):
         return out, mu, logVar
 
 
-
-class ConvAutoencoder(nn.Module):
+# TODO: fine-tune the architechture: 
+class ConvAE(nn.Module):
     def __init__(self):
-        super(ConvAutoencoder, self).__init__()
+        super(ConvAE, self).__init__()
+        
         # Encoder
-        self.conv1 = nn.Conv2d(3, 16, 3, padding=1)  
-        self.conv2 = nn.Conv2d(16, 4, 3, padding=1)
-        self.pool = nn.MaxPool2d(2, 2)
+        # For MSE Loss
+        self.encoder = nn.Sequential(
+            nn.Conv2d(3, 16, kernel_size = 3),
+            nn.ReLU(True),
+            nn.Conv2d(16, 4, kernel_size = 3),
+            nn.ReLU(True)
+        )
+
+        # For BCE Loss
+        # self.conv1 = nn.Conv2d(3, 16, 3, padding=1)
+        # self.conv2 = nn.Conv2d(16, 4, 3, padding=1)
+        # self.pool = nn.MaxPool2d(2, 2)
         
         # Decoder
-        self.t_conv1 = nn.ConvTranspose2d(4, 16, 2, stride=2)
-        self.t_conv2 = nn.ConvTranspose2d(16, 3, 2, stride=2)
+        # For MSE Loss
+        self.decoder = nn.Sequential(             
+            nn.ConvTranspose2d(4, 16, kernel_size = 3),
+            nn.ReLU(True),
+            nn.ConvTranspose2d(16, 3, kernel_size = 3),
+            nn.ReLU(True)
+        )
+
+        # For BCE Loss
+        # self.t_conv1 = nn.ConvTranspose2d(4, 16, 2, stride=2)
+        # self.t_conv2 = nn.ConvTranspose2d(16, 3, 2, stride=2)
+
+
 
     def forward(self, x):
+        # For BCE Loss
         # Encoder
-        x = F.relu(self.conv1(x))
-        x = self.pool(x)
-        # add second hidden layer
-        x = F.relu(self.conv2(x))
-        x = self.pool(x)  # compressed representation
+        # x = F.relu(self.conv1(x))
+        # x = self.pool(x)
+        # x = F.relu(self.conv2(x))
+        # x = self.pool(x)  # compressed representation
 
-        # Decoder
-        x = F.relu(self.t_conv1(x))
-        x = F.sigmoid(self.t_conv2(x))
+        # # Decoder
+        # x = F.relu(self.t_conv1(x))
+        # # sigmoid for scaling from 0 to 1
+        # x = torch.sigmoid(self.t_conv2(x))
+
+
+        # For MSE Loss
+        z = self.encoder(x)
+        x_hat = self.decoder(z)
+        
                 
-        return x
+        return x_hat
