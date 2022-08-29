@@ -74,8 +74,8 @@ def test_robustness( model, device, test_loader, epsilon ):
             
             else:
 
-                # Save some adv examples for visualization later
-                if len(adv_examples) < 5:
+                # Save some adv examples
+                if len(adv_examples) < 500:
                     adv_ex = perturbed_data.squeeze().detach().cpu().numpy()
                     adv_examples.append( (init_pred.item(), final_pred.item(), adv_ex, data) )
 
