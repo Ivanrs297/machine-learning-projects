@@ -1,5 +1,5 @@
 import torch
-from attacks import fgsm_attack
+import torch.nn.functional as F
 
 # FGSM attack code
 def fgsm_attack(image, epsilon, data_grad):
