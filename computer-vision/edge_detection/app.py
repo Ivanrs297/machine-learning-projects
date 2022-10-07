@@ -118,7 +118,7 @@ def canny(img, kernel, sigma):
 interface = gr.Interface(
     title = "Canny Edge Detector 🤖",
     description = "<h3>The Canny edge detector is an edge detection operator that uses a multi-stage algorithm to detect a wide range of edges in images.</h3> <br> <b>Select an image 🖼</b>",
-    article='<a href="#"> Hello </a>',
+    article='Step-by-step on GitHub <a href="https://github.com/Ivanrs297/machine-learning-projects/blob/main/computer-vision/edge_detection/main.ipynb"> notebook </a> <br> ~ Ivanrs',
     allow_flagging = "never",
     fn = canny, 
     inputs = [
