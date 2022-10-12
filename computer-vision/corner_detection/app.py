@@ -1,5 +1,4 @@
 import cv2
-import matplotlib.pyplot as plt
 from scipy import signal as sig
 import numpy as np
 from scipy.ndimage.filters import convolve
@@ -24,7 +23,7 @@ def gaussian_kernel(size, sigma=1):
 
 def harris(img):
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    I_x = gradient_x(img_gray)
+    I_x = gradient_x(img_gray)p
     I_y = gradient_y(img_gray)
     Ixx = convolve(I_x**2, gaussian_kernel(3, 1))
     Ixy = convolve(I_y*I_x, gaussian_kernel(3, 1))
@@ -73,7 +72,7 @@ def harris(img):
 interface = gr.Interface(
 title = "Harris Corner Detector 🤖",
 description = "<h3>The idea is to locate interest points where the surrounding neighbourhood shows edges in more than one direction.</h3> <br> <b>Select an image 🖼</b>",
-article='Step-by-step on GitHub <a href="https://github.com/Ivanrs297/machine-learning-projects/blob/main/computer-vision/edge_detection/main.ipynb"> notebook </a> <br> ~ Ivanrs',
+article='Step-by-step on GitHub <a href="https://github.com/Ivanrs297/machine-learning-projects/blob/main/computer-vision/corner_detection/main.ipynb"> notebook </a> <br> ~ Ivanrs',
 allow_flagging = "never",
 fn = harris, 
 inputs = [
