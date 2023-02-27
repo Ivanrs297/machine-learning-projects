@@ -1,2 +1,3 @@
+mlflow
 pytorch-metric-learning
 faiss-gpu
