@@ -29,7 +29,9 @@ On the container
 
         mlflow server -p 80 --host 0.0.0.0 
 
-        sudo docker-compose up -d
+Or
+
+        sudo docker compose up -d
 
 
 Create a <code>.env</code> file, example:

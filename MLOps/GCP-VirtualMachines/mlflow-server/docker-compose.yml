@@ -10,10 +10,5 @@ services:
     ports:
       - "5000:5000"
     networks:
-      - public
-      - internal
+      - cv-inside-net
     entrypoint: mlflow server -h 0.0.0.0
-networks:
-  internal:
-  public:
-    driver: bridge
