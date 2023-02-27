@@ -14,4 +14,4 @@ services:
     entrypoint: mlflow server -h 0.0.0.0
 networks:
   cv-inside-net:
-    external: true
+    driver: bridge
