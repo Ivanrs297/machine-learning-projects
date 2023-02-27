@@ -15,11 +15,11 @@ Build the image
 
 Run the image
 
-        sudo docker run -itd --name=cv-inside-tracking -p 5000:80 cv-inside-tracking bash
+        sudo docker run -itd --name=cv-inside-tracking -p 80:80 cv-inside-tracking bash
 
 On the container
 
-        mlflow server --host 0.0.0.0
+        mlflow server -p 80 -host 0.0.0.0 
 
 
 Create a <code>.env</code> file, example:
