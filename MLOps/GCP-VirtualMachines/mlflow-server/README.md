@@ -17,9 +17,9 @@ Create a bridge network
 
         sudo docker network create cv-inside-net
 
-Run the image
+Run the image (Important: hostname and network arguments)
 
-        sudo docker run -itd --name=cv-inside-tracking -p 5000:5000 --net tulip-net cv-inside-tracking bash
+        sudo docker run -itd --name cv-inside-tracking -h=cv-inside-tracker -p 5000:5000 --net cv-inside-net cv-inside-tracking bash
 
 Attach container
 
@@ -27,13 +27,10 @@ Attach container
 
 On the container
 
-        mlflow server -p 80 --host 0.0.0.0 
+        mlflow server --host 0.0.0.0 
 
-Or
+Or docker compose (TODO)
 
         sudo docker compose up -d
 
-
-Create a <code>.env</code> file, example:
-
-        MLFOW_SERVER_IP="http://127.0.0.1:5000"
+TODO: NGINX Integration

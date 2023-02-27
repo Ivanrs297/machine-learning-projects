@@ -18,7 +18,7 @@ Running a project
 
 2. Create a container (<code>-itd</code> is required for bash entrypoint). By using <code>-v</code> argument the container will have a shared volume in <code>/container-results/</code> for saving the experiment results.
 
-        $ sudo docker run -itd --name=cv-inside --runtime=nvidia --gpus all  -v ./container-results:/workspace/container-results --net cv-inside-net cv-inside bash
+        $ sudo docker run -itd --name cv-inside --runtime=nvidia --gpus all  -v ./container-results:/workspace/container-results --net cv-inside-net cv-inside bash
 
 3. List containers
 

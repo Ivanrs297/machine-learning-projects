@@ -13,9 +13,16 @@ mlflow.set_tracking_uri(mlfow_server_ip)
 
 
 # Start experiment
-EXPERIMENT_NAME = "iris_logistic_model"
-EXPERIMENT_ID = mlflow.create_experiment(EXPERIMENT_NAME)
-with mlflow.start_run(experiment_id=EXPERIMENT_ID):
+experiment_name = "iris_logistic_model"
+
+# check if experiment exist
+existing_exp = mlflow.get_experiment_by_name(experiment_name)
+if not existing_exp:
+  mlflow.create_experiment(experiment_name)
+
+experiment = mlflow.set_experiment(experiment_name)
+
+with mlflow.start_run(experiment_id=experiment.experiment_id):
 
     # load the iris dataset
     iris = load_iris()
