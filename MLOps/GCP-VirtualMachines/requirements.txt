@@ -1,0 +1,2 @@
+pytorch-metric-learning
+faiss-gp
