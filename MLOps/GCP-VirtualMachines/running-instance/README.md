@@ -18,7 +18,7 @@ Running a project
 
 2. Create a container (<code>-itd</code> is required for bash entrypoint). By using <code>-v</code> argument the container will have a shared volume in <code>/container-results/</code> for saving the experiment results.
 
-        $ sudo docker run -itd --name=<container_name> --runtime=nvidia --gpus all  -v ./container-results:/workspace/container-results <image_id_or_name> bash
+        $ sudo docker run -itd --name=cv-inside --runtime=nvidia --gpus all  -v ./container-results:/workspace/container-results --net tulip-net cv-inside bash
 
 3. List containers
 
@@ -26,11 +26,11 @@ Running a project
 
 4. If container is not running then:
 
-        $ sudo docker start <container_name>
+        $ sudo docker start cv-inside
 
 5. Access container bash
    
-        $ sudo docker attach <container_name>
+        $ sudo docker attach cv-inside
 
 6. Inside the container, go to **src** folder. This folder must contain the source code of the project experiment.
 

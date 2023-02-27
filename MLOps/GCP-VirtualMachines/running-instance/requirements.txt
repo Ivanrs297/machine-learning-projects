@@ -1,3 +1,4 @@
 mlflow
+python-dotenv
 pytorch-metric-learning
 faiss-gpu

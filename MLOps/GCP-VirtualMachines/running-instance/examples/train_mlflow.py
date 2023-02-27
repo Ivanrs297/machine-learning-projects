@@ -6,7 +6,8 @@ from sklearn.metrics import accuracy_score
 from dotenv import dotenv_values
 
 # Configuration of tracking server
-config = dotenv_values(".env")
+# config = dotenv_values(".env")
+config = dotenv_values(".env.testing")
 mlfow_server_ip = config["MLFOW_SERVER_IP"]
 mlflow.set_tracking_uri(mlfow_server_ip)
 

@@ -13,9 +13,13 @@ Build the image
 
         sudo docker build --tag cv-inside-tracking .
 
+Create a bridge network
+
+        sudo docker network create cv-inside-net
+
 Run the image
 
-        sudo docker run -itd --name=cv-inside-tracking -p 5000:5000 cv-inside-tracking bash
+        sudo docker run -itd --name=cv-inside-tracking -p 5000:5000 --net tulip-net cv-inside-tracking bash
 
 Attach container
 
@@ -24,6 +28,8 @@ Attach container
 On the container
 
         mlflow server -p 80 --host 0.0.0.0 
+
+        sudo docker-compose up -d
 
 
 Create a <code>.env</code> file, example:

@@ -1,8 +1,8 @@
 version: "3.9"
 services:
   mlflow:
-    container_name: tracker_mlflow
-    image: tracker_ml
+    container_name: cv-inside-tracker
+    image: cv-inside-tracker
     restart: unless-stopped
     build:
       context: ./
