@@ -20,7 +20,7 @@ Running a project
 
 2. Create a container (<code>-itd</code> is required for bash entrypoint)
 
-        $ sudo docker run -itd --name=<container_name> --runtime=nvidia --gpus all  -v /docker-results:/docker-results <image_id> bash
+        $ sudo docker run -itd --name=<container_name> --runtime=nvidia --gpus all  -v /container-results:/workspace/container-results <image_id> bash
 
 3. List containers
 
