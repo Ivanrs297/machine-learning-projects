@@ -13,8 +13,9 @@ mlflow.set_tracking_uri(mlfow_server_ip)
 
 
 # Start experiment
-name = "iris_logistic_model"
-with mlflow.start_run(run_name = name):
+EXPERIMENT_NAME = "iris_logistic_model"
+EXPERIMENT_ID = mlflow.create_experiment(EXPERIMENT_NAME)
+with mlflow.start_run(experiment_id=EXPERIMENT_ID):
 
     # load the iris dataset
     iris = load_iris()
