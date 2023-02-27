@@ -1,1 +1,2 @@
-FROM ghcr.io/mlflow/mlflow:v2.0.1
+FROM continuumio/miniconda3:latest
+RUN pip install mlflow 

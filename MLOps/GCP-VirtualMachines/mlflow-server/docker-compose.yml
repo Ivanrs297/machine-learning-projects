@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  mlflow:
+    container_name: tracker_mlflow
+    image: tracker_ml
+    restart: unless-stopped
+    build:
+      context: /
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    networks:
+      - public
+      - internal
+    entrypoint: mlflow server -h 0.0.0.0
+networks:
+  internal:
+  public:
+    driver: bridge
