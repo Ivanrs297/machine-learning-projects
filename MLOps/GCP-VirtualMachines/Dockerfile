@@ -1,6 +1,6 @@
 FROM nvcr.io/nvidia/pytorch:22.12-py3
-WORKDIR /project
+WORKDIR /workspace
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
-COPY /project /project/
+COPY /project /workspace/project/
 CMD ["echo", "All set!"]
