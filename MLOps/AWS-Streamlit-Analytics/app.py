@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 import plotly.express as px
-import matplotlib.pyplot as plt
 
 # Streamlit will perform internal magic so that the data will be downloaded only once and cached for future use.
 @st.cache_data
