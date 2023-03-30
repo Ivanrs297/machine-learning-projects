@@ -1,14 +1,13 @@
 # NVIDIA-Docker on GCP GPU Virtual Machines
 ## Requirements
 [NVIDIA Reference](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch)
-1. Docker Engine
+1. [Docker Engine](https://docs.docker.com/engine/install/ubuntu/)
 2. NVIDIA GPU Drivers
 3. NVIDIA Container Toolkit [Installation Instructions]("https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker")
 
 ## Installation
-Building Docker Image
+Building Docker Image, within this directory
 
-        $ cd docker
         $ sudo docker build --tag cv-inside .
 
 Running a project
@@ -18,7 +17,7 @@ Running a project
 
 2. Create a container (<code>-itd</code> is required for bash entrypoint). By using <code>-v</code> argument the container will have a shared volume in <code>/container-results/</code> for saving the experiment results.
 
-        $ sudo docker run -itd --name cv-inside --runtime=nvidia --gpus all  -v ./container-results:/workspace/container-results --net cv-inside-net cv-inside bash
+        $ sudo docker run -itd --name cv-inside-[your-name] --runtime=nvidia --gpus all  -v ./container-results:/workspace/container-results --net cv-inside-net cv-inside bash
 
 3. List containers
 
@@ -26,11 +25,11 @@ Running a project
 
 4. If container is not running then:
 
-        $ sudo docker start cv-inside
+        $ sudo docker start cv-inside-[your-name]
 
 5. Access container bash
    
-        $ sudo docker attach cv-inside
+        $ sudo docker attach cv-inside-[your-name]
 
 6. Inside the container, go to **src** folder. This folder must contain the source code of the project experiment.
 
