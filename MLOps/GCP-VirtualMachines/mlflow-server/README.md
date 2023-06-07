@@ -19,7 +19,7 @@ Create a bridge network
 
 Run the image (Important: hostname and network arguments)
 
-        sudo docker run -itd --name cv-inside-tracking -h=cv-inside-tracker -p 5000:5000 --net cv-inside-net cv-inside-tracking bash
+        sudo docker run -itd --name cv-inside-tracking -h=cv-inside-tracker -p 80:80 --net cv-inside-net cv-inside-tracking bash
 
 Attach container
 
@@ -28,6 +28,9 @@ Attach container
 On the container
 
         mlflow server --host 0.0.0.0 
+
+Or
+        mlflow ui -p 80
 
 Or docker compose (TODO)
 
