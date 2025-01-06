@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/520575189693497904/dc007a6c7b5d47c6b75e5b94886fdcd5/artifacts
+deleted_time: 1731012007017
+end_time: 1731011984399
+entry_point_name: ''
+experiment_id: '520575189693497904'
+lifecycle_stage: deleted
+run_id: dc007a6c7b5d47c6b75e5b94886fdcd5
+run_name: nervous-hen-796
+run_uuid: dc007a6c7b5d47c6b75e5b94886fdcd5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1731011976248
+status: 3
+tags: []
+user_id: ivanr
